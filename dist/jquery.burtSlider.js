@@ -17,9 +17,9 @@
         children: "li",
         nextId: null,
         prevId: null,
-        nextClass: "burt_selector_next",
-        prevClass: "burt_selector_prev",
-        selectedClass: "eg_selected",
+        nextClass: "burt_selector",
+        prevClass: "burt_selector",
+        selectedClass: "burt_selected",
         foreverScroll: true
     };
 
@@ -44,10 +44,10 @@
             jQuery(window).resize( function () {
                 self.selectorWidth = parseInt( self.$element.css( "width" ), 10 );
                 self.sectionWidth = self.selectorWidth / self.settings.numShow;
-                self.modifyParentChildren();
+                self.modifyDom();
             });
             // modify children
-            self.modifyParentChildren();
+            self.modifyDom();
             // next click
             jQuery("#" + self.settings.nextId).on("click", function() {
                 if(self.$element.children().filter(":animated").length>0) {
@@ -63,7 +63,7 @@
                 self.animatePrev();
             });
         },
-        modifyParentChildren: function () {
+        modifyDom: function () {
             var self = this;
             self.$element.css("position", "relative");
             parent = self.$element.parent();

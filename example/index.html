@@ -1,56 +1,70 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>jQuery Boilerplate</title>
-		<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
-		<script src="../src/jquery.burtSlider.js"></script>
-                <style>
-                 #such-ul {
-                   width: 90%;
-                   height: 100px;
-                   overflow: hidden;
-                   position: relative;
-                   list-style: none;
-                   display: inline-block;
-                   padding: 0;
-                   margin:0;
-                   margin-top: 100px;
-                 }
-                 #such-ul li {
-                   border: 1px solid black;
-                   font-size: 40px;
-                   width: 33%;
-                 }
-                 .burt_selector {
-                    display: inline-block;
-                    margin-bottom: 16%;
-                    vertical-align: middle;
-                    font-size: 2em;
-                    cursor: pointer;
-                 }
-                 .much-div {
-                    max-width: 960px;
-                   margin: 0 auto;
-                 }
-                </style>
-	</head>
-	<body>
-                <div class="much-div">
-                    <ul id="such-ul">
-                        <li>Such HTML</li>
-                        <li>Much jQuery</li>
-                        <li>Wow</li>
-                        <li>So Cool</li>
-                        <li>Amazing</li>
-                        <li>Awesome</li>
-                        <li>Many Things!</li>
-                    </ul>
-                </div>
-		<script>
-		 $(function() {
-		     $("#such-ul").burtSlider();
+    <head>
+	<title>jQuery Boilerplate</title>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+	<script src="../src/jquery.burtSlider.js"></script>
+        <style>
+         #such-ul, #so-ul {
+           width: 90%;
+           height: 100px;
+           overflow: hidden;
+           position: relative;
+           list-style: none;
+           display: inline-block;
+           padding: 0;
+           margin:0;
+           margin-top: 100px;
+         }
+         #such-ul li, #so-ul li {
+           border: 1px solid black;
+           font-size: 40px;
+           text-align: center;
+           width: 33%;
+         }
+         .burt_selector {
+           display: inline-block;
+           margin-bottom: 16%;
+           vertical-align: middle;
+           font-size: 2em;
+           cursor: pointer;
+         }
+         .much-div {
+           max-width: 960px;
+           margin: 0 auto;
+         }
+        </style>
+    </head>
+    <body>
+        <div class="much-div">
+            <ul id="such-ul">
+                <li>Such HTML</li>
+                <li>Much jQuery</li>
+                <li>Wow</li>
+                <li>So Cool</li>
+                <li>Amazing</li>
+                <li>Awesome</li>
+                <li>Many Things!</li>
+            </ul>
+        </div>
 
-		 });
-		</script>
-</body>
+	<div class="much-div">
+            <ul id="so-ul">
+                <li>Such HTML</li>
+                <li>Much jQuery</li>
+                <li>Wow</li>
+                <li>So Cool</li>
+                <li>Amazing</li>
+                <li>Awesome</li>
+                <li>Many Things!</li>
+            </ul>
+        </div>
+        <script>
+	 $(function() {
+	     $("#such-ul").burtSlider();
+             $("#so-ul").burtSlider();
+
+	 });
+	</script>
+    </body>
 </html>

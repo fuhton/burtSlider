@@ -1,13 +1,13 @@
 {
-	"name": "burtSlider",
-	"title": "Burt Slider",
+	"name": "muchslide",
+	"title": "Much Slide",
 	"description": "A lightweight jQuery slider.",
 	"author": "Nick Smith",
 	"repository": {
 		"type" : "git",
-		"url" : "http://github.com/fuhton/burtSlider.git"
+		"url" : "http://github.com/fuhton/muchslide.git"
 	},
-	"homepage": "https://github.com/fuhton/burtSlider/",
+	"homepage": "fuhton.github.io/muchslide",
 	"version": "0.5.0",
 	"devDependencies": {
 		"grunt": "~0.4.1",

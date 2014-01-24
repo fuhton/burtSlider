@@ -2,7 +2,7 @@ module.exports = function(grunt) {
     grunt.initConfig({
 
         // Import package manifest
-        pkg: grunt.file.readJSON("burtSlider.jquery.json"),
+        pkg: grunt.file.readJSON("muchslide.jquery.json"),
 
         // Banner definitions
         meta: {
@@ -19,8 +19,8 @@ module.exports = function(grunt) {
 	// Concat definitions
 	concat: {
 	    dist: {
-		src: ["src/jquery.burtSlider.js"],
-		dest: "dist/jquery.burtSlider.js"
+		src: ["src/jquery.muchslide.js"],
+		dest: "dist/jquery.muchslide.js"
 	    },
 	    options: {
 		banner: "<%= meta.banner %>"
@@ -29,7 +29,7 @@ module.exports = function(grunt) {
 
 	// Lint definitions
 	jshint: {
-	    files: ["src/jquery.burtSlider.js"],
+	    files: ["src/jquery.muchslide.js"],
 	    options: {
 		jshintrc: ".jshintrc"
 	    }
@@ -38,8 +38,8 @@ module.exports = function(grunt) {
 	// Minify definitions
 	uglify: {
 	    my_target: {
-		src: ["dist/jquery.burtSlider.js"],
-		dest: "dist/jquery.burtSlider.min.js"
+		src: ["dist/jquery.muchslide.js"],
+		dest: "dist/jquery.muchslide.min.js"
 	    },
 	    options: {
 		banner: "<%= meta.banner %>"

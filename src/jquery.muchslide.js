@@ -3,7 +3,7 @@
 ;(function ( $, window, document, undefined ) {
 
     // Create the defaults once
-    var pluginName = "burtSlider",
+    var pluginName = "muchslide",
     defaults = {
         numShow: 3,
         children: "li",
@@ -12,11 +12,12 @@
         nextClass: "burt_selector",
         prevClass: "burt_selector",
         selectedClass: "burt_selected",
+        selectedCallback: function() {},
         foreverScroll: true
     };
 
     // The actual plugin constructor
-    function BurtSlider ( element, options ) {
+    function MuchSlide ( element, options ) {
         var self = this;
         self.element = element;
         self.$element = $(self.element);
@@ -26,7 +27,7 @@
         self.init();
     }
 
-    BurtSlider.prototype = {
+    MuchSlide.prototype = {
         init: function () {
             var self = this;
             self.selectorWidth = parseInt( self.$element.css( "width" ), 10 );
@@ -114,11 +115,11 @@
         }
     };
 
-    $.fn.burtSlider = function ( options ) {
+    $.fn[ pluginName ] = function ( options ) {
         return this.each(function() {
             //TODO - not allowing multiple different instances on one page
-            if ( !$.data( self, "plugin_" + pluginName ) ) {
-                $.data( self, "plugin_" + pluginName, new BurtSlider( this, options ) );
+            if ( !$.data( this, "plugin_" + pluginName ) ) {
+                $.data( this, "plugin_" + pluginName, new MuchSlide( this, options ) );
             }
         });
     };

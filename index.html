@@ -1,26 +1,102 @@
 <!DOCTYPE html>
 <html>
     <head>
-	<title>BurtSlider</title>
+	<title>Much Slide</title>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
-	<script src="src/jquery.burtSlider.js"></script>
+	<script src="src/jquery.muchslide.js"></script>
+<link href='http://fonts.googleapis.com/css?family=Duru+Sans' rel='stylesheet' type='text/css'>
+
         <link rel="stylesheet" href="styles/style.css">
     </head>
     <body>
-        <div class="much-div">
-            <ul id="such-ul">
-                <li>Such HTML</li>
-                <li>Much jQuery</li>
-                <li>Wow</li>
-                <li>So Cool</li>
-                <li>Amazing</li>
-                <li>Awesome</li>
-                <li>Many Things!</li>
-            </ul>
-        </div>
+        <header class="site-header">
+            <div class="wrapper">
+                <h1>Much Slide</h1>
+                <span>So jQuery. Such control. WoW!</span>
+            </div>
+        </header>
+        <section class="primary-slider">
+            <div class="wrapper">
+                <div class="much-div">
+                    <ul id="such-ul">
+                        <li>Such HTML</li>
+                        <li>Much jQuery</li>
+                        <li>Wow</li>
+                        <li>So Cool</li>
+                        <li>Amazing</li>
+                        <li>Awesome</li>
+                        <li>Many Things!</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <section class="primary-review">
+            <div class="wrapper">
+                <div class="so-code">
+                    <pre>
+                        defaults = {
+                                <span>// Integer : # of elements to be displayed at once</span>
+                                numShow: 3,
+                                <span>// String : Element type of children</span>
+                                children: "li",
+                                <span>// String : ID of Next clicker element</span>
+                                <span>// Note :: Both nextId and prevId must be defined
+                                    for the defaults to be overridden</span>
+                                nextId: null,
+                                <span>// String : ID of Prev clicker element</span>
+                                prevId: null,
+                                <span>// String : Class of Prev clicker element</span>
+                                nextClass: "burt_selector",
+                                <span>// String : Class of Prev clicker element</span>
+                                prevClass: "burt_selector",
+                                <span>// String : Callback class for the selected child element</span>
+                                selectedClass: "burt_selected",
+                                <span>// Boolean : Forever cycle keeps going and going and ...</span>
+                                foreverScroll: true
+                            };
+                    </pre>
+                </div>
+            </div>
+        </section>
+        <section class="primary-example">
+            <div class="wrapper">
+                <div class="wow">
+                    <div class="doge">
+                        <img src="http://i0.kym-cdn.com/photos/images/newsfeed/000/581/296/c09.jpg">
+                        <img src="http://meme-lol.com/wp-content/uploads/2013/11/Doge-MEME.jpg">
+                        <img src="http://i3.kym-cdn.com/photos/images/newsfeed/000/581/720/315.jpg">
+                        <img src="http://i3.kym-cdn.com/photos/images/newsfeed/000/581/723/a8b.jpg">
+                        <img src="http://triggerplug.com/wp-content/uploads/2013/11/dange-to-touch.jpg">
+                    </div>
+                </div>
+                <div class="selectors">
+                    <div id="less_doge" class="doge_choose"><h3>Much Less</h3></div>
+                    <div id="more_doge" class="doge_choose"><h3>So More</h3></div>
+                </div>
+            </div>
+        </section>
+        <footer class="site-footer">
+            <div class="wrapper">
+                <p>Built by Nick Smith with the cooperation of Burst Marketing Inc</p>
+            </div>
+        </footer>
 	<script>
 	 $(function() {
-	     $("#such-ul").burtSlider();
+
+
+             $("#such-ul").muchslide();
+
+
+             $(".doge").muchslide({
+                 numShow: 1,
+                 children: "img",
+                 nextId: "more_doge",
+                 prevId: "less_doge",
+                 nextClass: "doge_choose",
+                 prevClass: "doge_choose",
+                 selectedClass: "much_choose",
+                 foreverScroll: false
+             });
 	 });
 	</script>
     </body>

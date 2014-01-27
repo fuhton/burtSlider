@@ -22,7 +22,7 @@
            text-align: center;
            width: 33%;
          }
-         .burt_selector {
+         .much_selector {
            display: inline-block;
            margin-bottom: 16%;
            vertical-align: middle;
@@ -62,7 +62,10 @@
         <script>
 	 $(function() {
 	     $("#such-ul").muchslide();
-             $("#so-ul").muchslide();
+             $("#so-ul").muchslide({
+                 autoSlide: true,
+                 animation: "fast"
+             });
 
 	 });
 	</script>

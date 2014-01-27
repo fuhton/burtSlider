@@ -1,3 +1,11 @@
+/*
+ *  jQuery BurtSlider - v0.5.0
+ *  A jump-start for jQuery plugins development.
+ *  http://jqueryburtSlider.com
+ *
+ *  Made by Nick Smith
+ *  Under MIT License
+ */
 // the semi-colon before function invocation is a safety net against concatenated
 // scripts and/or other plugins which may not be closed properly.
 ;(function ( $, window, document, undefined ) {

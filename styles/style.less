@@ -51,7 +51,7 @@ font-family: 'Duru Sans', sans-serif;
   border-top: 5px solid @purple;
   .much-div
   {    
-    .burt_selector
+    .much_selector
     {
       display: inline-block;
       color: @yellow;
@@ -121,9 +121,10 @@ font-family: 'Duru Sans', sans-serif;
     width: 100%;
     position: absolute;
     height: 400px; 
+    margin-top: 100px;
     .doge
     {
-      width: 50%;
+      width: 48%;
       height: 100%;      
       overflow: hidden;
       position: relative;
@@ -136,17 +137,47 @@ font-family: 'Duru Sans', sans-serif;
         width: 100%;
       }
     }
+    .much_pagination
+    {
+      list-style: none;
+      display: inline-block;
+      position: relative;
+      overflow: hidden;
+      width: 46%;
+      li
+      {
+        padding: 25px 10px;
+        cursor: pointer;
+        margin: 5px 0;
+        background: @green;
+        color: lighten(@tan, 5%);
+        transition: 1.0s ease;
+        &:after
+        {
+          content: ".";
+        }
+        &:hover
+        {
+          background: lighten(@green, 5%);
+        }
+      }
+    }
   }
-  .selectors { 
-    .doge_choose {
+  .selectors
+  { 
+    .doge_choose
+    {
       display: inline-block;
       background: @purple;
       width: 45%;
-      //height: 500px;
       padding: 20px; 
-      padding-top: 450px;
       color: lighten(@tan, 5%);
       cursor: pointer;
+      transition: 0.5s ease;
+      &:hover
+      {
+        background: lighten(@purple, 10%);
+      }
     }
   }
 }

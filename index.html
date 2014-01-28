@@ -52,7 +52,16 @@
                                 <span>// String : Callback class for the selected child element</span>
                                 selectedClass: "burt_selected",
                                 <span>// Boolean : Forever cycle keeps going and going and ...</span>
-                                foreverScroll: true
+                                foreverScroll: true,
+                                <span>// Boolean : Display editable pagination</span>
+                                pagination: false,
+                                <span>// Boolean : Slider automatically advances</span>
+                                autoSlide: false,
+                                <span>// Int : # of milliseconds between each auto transition</span>
+                                autoSlideDuration: 3500,
+                                <span>// String / JSON : pass any accepable anmiation argument
+                                    in to increase the scroll, position, or duration</span>
+                                animation: null
                             };
                     </pre>
                 </div>
@@ -95,7 +104,17 @@
                  nextClass: "doge_choose",
                  prevClass: "doge_choose",
                  selectedClass: "much_choose",
-                 foreverScroll: false
+                 foreverScroll: false,
+                 pagination: true,
+                 autoSlide: false,
+                 autoSlideDuration: 1000,
+                 animation: {
+                     duration: 1000,
+                     specialEasing: {
+                         width: "linear",
+                         height: "easeOutBounce"
+                     },
+                 }
              });
 	 });
 	</script>

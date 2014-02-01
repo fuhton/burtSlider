@@ -11,12 +11,18 @@
         prevId: null,
         nextClass: "much_selector",
         prevClass: "much_selector",
+        selected: "much_select",
         selectedClass: "much_selected",
         selectedCallback: function() {},
         foreverScroll: true,
         pagination: false,
+        pagedClass: "much_pagination",
+        pagedCallback: function() {},
         autoSlide: false,
-        autoSlideDuration: 3500,
+        autoSlideSpeed: 3500,
+        autoSlidePause: true,
+        autoSlidePauseClass: null,
+        autoSlideHoverCallback: function() {},
         animation: null
     };
 
@@ -34,9 +40,11 @@
     MuchSlide.prototype = {
         init: function () {
             var self = this;
-            self.selectorWidth = parseInt( self.$element.css( "width" ), 10 );
+            //self.selectorWidth = parseInt( self.$element.css( "width" ), 10 );
+            self.selectorWidth = self.$element.width();
+            self.currentPage = 0;
             self.sectionWidth = self.selectorWidth / self.settings.numShow;
-            self.children = self.$element.children( self.settings.children );
+            self.__children();
 
             // modify children
             self.modifyDom();
@@ -54,14 +62,30 @@
             if ( self.settings.pagination && self.settings.numShow === 1 ) {
                 self.createPagination();
                 self.clickPagination();
+                //self.markPagination();
             }
-
             // Auto Slide
             if ( self.settings.autoSlide ) {
-                self.set = setInterval( function () {
-                    self.animateNext();
-                }, self.settings.autoSlideDuration);
+                self.createTimer();
+                //On hover of element, pagedClass, and selector ID's -> pause the autoSlide
+                if ( self.settings.autoSlidePause ) {
+                    jQuery( "#" + self.settings.nextId +
+                            ", #" + self.settings.prevId +
+                            ", #" + self.$element.attr("id") +
+                            ", ." + self.settings.pagedClass +
+                            ", ." + self.settings.autoSlidePauseClass
+                          ).hover( function () {
+                              clearInterval( self.set );
+                              self.settings.autoSlideHoverCallback();
+                          }, function ()  {
+                              self.createTimer();
+                          });
+                }
             }
+        },
+        __children: function () {
+            var self = this;
+            self.children = self.$element.children( self.settings.children );
         },
         modifyDom: function () {
             var self = this;
@@ -76,11 +100,10 @@
             self.counter = 0;
             self.children.each( function() {
                 var $self = jQuery(this);
-                $self.attr("data-counter", self.counter); // add data-self.counter attribute ++
-                $self.css("position", "absolute"); // add position style
-                $self.css("left", ( $self.data("counter") * self.sectionWidth ) + "px");
+                $self.attr("data-counter", self.counter).css({ "position": "absolute", "left": ( $self.data("counter") * self.sectionWidth ) + "px" });
                 self.counter++;
             });
+            jQuery("#" + self.settings.nextId + ", #" + self.settings.prevId).mousedown(function(){return false;});
         },
         resizeWindow: function () {
             var self = this;
@@ -89,6 +112,12 @@
                 self.sectionWidth = self.selectorWidth / self.settings.numShow;
                 self.modifyDom();
             });
+        },
+        createTimer: function () {
+            var self = this;
+            self.set = setInterval( function () {
+                self.animateNext();
+            }, self.settings.autoSlideSpeed);
         },
         selectorClick: function () {
             var self = this;
@@ -100,7 +129,7 @@
                 self.animateNext();
             });
             // prev click
-            jQuery("#" + self.settings.prevId).on("click", function() {
+            jQuery("#" + self.settings.prevId).on("click", function( ) {
                 if(self.$element.children().filter(":animated").length>0) {
                     return false;
                 }
@@ -109,51 +138,48 @@
         },
         animateNext: function () {
             var self = this;
-            //reset children variable for updated dom
-            self.children = self.$element.children( self.settings.children );
+            self.__children();
             if ( parseInt(self.children.last().css("left"), 10) >= (self.selectorWidth - 2 ) ) {
-                self.animateEachNext( self.sectionWidth );
+                self.moveEach( self.sectionWidth );
             } else if ( self.settings.foreverScroll ) {
                 self.children.first().remove().insertAfter(self.children.last());
                 self.children.first().animate({left: self.selectorWidth});
-                self.animateEachNext( self.sectionWidth );
+                self.moveEach( self.sectionWidth );
             }
-        },
-        animateEachNext: function ( sectionWidth ) {
-            var self = this;
-            self.length = sectionWidth;
-            self.children.each( function () {
-                var $self = jQuery(this);
-                $self.finish().animate({left: "-=" + self.length }, self.settings.animation);
-            });
         },
         animatePrev: function () {
             var self = this;
-            //reset children variable for updated dom
-            self.children = self.$element.children( self.settings.children );
+            self.__children();
             if ( parseInt(self.children.first().css("left"), 10) <= -1 ) {
-                self.animateEachPrev( self.sectionWidth );
+                self.moveEach( self.sectionWidth, "+" );
             } else if ( self.settings.foreverScroll ) {
                 self.children.last().remove().insertBefore(self.children.first());
                 self.children.last().animate({left: -self.sectionWidth});
-                self.animateEachPrev( self.sectionWidth );
+                self.moveEach( self.sectionWidth, "+" );
             }
         },
-        animateEachPrev: function ( sectionWidth ) {
+        moveEach: function ( sectionWidth, direction ) {
             var self = this;
+            self.direction = direction || "-";
             self.length = sectionWidth;
             self.children.each( function () {
                 var $self = jQuery(this);
-                $self.finish().animate({left: "+=" + self.length }, self.settings.animation);
+                $self.finish().animate({left: self.direction + "=" + self.length }, self.settings.animation, function() {
+                    left = $self.position().left;
+                    $self.removeClass( self.settings.selected );
+                    if ( left < self.selectorWidth && left > -1  ) {
+                        $self.addClass( self.settings.selected );
+                        self.currentPage = $self.data("counter");
+                        self.markPagination();
+                    }
+                });
             });
         },
         itemClick: function () {
             var self = this;
             self.children.on( "click", function() {
                 var $self = jQuery(this);
-                self.children.each( function () {
-                    jQuery(this).removeClass( self.settings.selectedClass);
-                });
+                self.children.removeClass( self.settings.selectedClass);
                 $self.addClass( self.settings.selectedClass );
                 self.settings.selectedCallback();
             });
@@ -165,7 +191,7 @@
             self.selectedChildLeft =  parseInt( self.selectedChild.css("left"), 10 );
             self.selectedLeft = self.selectedChildLeft / self.sectionWidth;
             if ( self.selectedChildLeft < 0 || self.selectedChildLeft > 0 ) {
-                self.animateEachNext( self.selectedChildLeft);
+                self.moveEach( self.selectedChildLeft );
             }
         },
         createPagination: function () {
@@ -176,10 +202,31 @@
                 self.page.append("<li class='much_page' data-counter=" + i  + ">" + i + "</li>");
             }
         },
+        __markPagination: function () {
+            var self = this;
+            self.page.children().removeClass( self.settings.pagedClass );
+            $self.addClass( self.settings.pagedClass );
+        },
+        markPagination: function () {
+            var self = this;
+            self.page.children().each( function () {
+                var $self = jQuery(this);
+                if ( $self.data("counter") === self.currentPage ) {
+                    self.page.children().removeClass( self.settings.pagedClass );
+                    $self.addClass( self.settings.pagedClass );
+                }
+            });
+        },
         clickPagination: function () {
             var self = this;
             self.page.children().on( "click", function () {
-                var $self = jQuery(this);
+                if(self.$element.children().filter(":animated").length>0) {
+                    return false;
+                }
+                $self = jQuery(this);
+                self.page.children().removeClass( self.settings.pagedClass );
+                $self.addClass( self.settings.pagedClass );
+                self.settings.pagedCallback();
                 self.selectedPage = $self.data("counter");
                 self.itemMoveTo( self.selectedPage );
             });

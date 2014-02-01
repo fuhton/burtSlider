@@ -22,6 +22,9 @@
            text-align: center;
            width: 33%;
          }
+         li.much_pagination, .much_select {
+           background: red;
+         }
          .much_selector {
            display: inline-block;
            margin-bottom: 16%;
@@ -61,10 +64,9 @@
         </div>
         <script>
 	 $(function() {
-	     $("#such-ul").muchslide();
              $("#so-ul").muchslide({
                  autoSlide: true,
-                 animation: "fast"
+                 autoSlideDuration: 1000,
              });
 
 	 });

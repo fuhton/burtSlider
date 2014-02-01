@@ -46,8 +46,24 @@ module.exports = function(grunt) {
 	    }
 	},
 
+        watch: {
+            options: {
+                livereload: true
+            },
+            // LINT JS AND MINIFY
+            js: {
+                files: ["src/jquery.muchslide.js"],
+                tasks: ["jshint", "concat", "uglify"],
+                options: {
+                    spawn: false,
+                    debounceDelay: 1000
+                }
+            }
+        },
+
     });
 
+    grunt.loadNpmTasks("grunt-contrib-watch");
     grunt.loadNpmTasks("grunt-contrib-concat");
     grunt.loadNpmTasks("grunt-contrib-jshint");
     grunt.loadNpmTasks("grunt-contrib-uglify");

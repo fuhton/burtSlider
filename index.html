@@ -46,19 +46,35 @@
                                 <span>// String : ID of Prev clicker element</span>
                                 prevId: null,
                                 <span>// String : Class of Prev clicker element</span>
-                                nextClass: "burt_selector",
+                                nextClass: "much_selector",
                                 <span>// String : Class of Prev clicker element</span>
-                                prevClass: "burt_selector",
+                                prevClass: "much_selector",
+                                <span>// String : Class for the currently displayed element</span>
+                                selected: "much_select",
                                 <span>// String : Callback class for the selected child element</span>
-                                selectedClass: "burt_selected",
+                                selectedClass: "much_selected",
+                                <span>// Function : Callback function upon the selected child element</span>
+                                selectedCallback: function() {},
                                 <span>// Boolean : Forever cycle keeps going and going and ...</span>
                                 foreverScroll: true,
                                 <span>// Boolean : Display editable pagination</span>
                                 pagination: false,
+                                <span>// String : Class of current pagination </span>
+                                pagedClass: "much_pagination",
+                                <span>// String : Callback for current pagination </span>
+                                pagedCallback: function() {},
+                                <span>// String : Class for children of pagination </span>
+                                pagedChildClass: "much_paged",
                                 <span>// Boolean : Slider automatically advances</span>
                                 autoSlide: false,
                                 <span>// Int : # of milliseconds between each auto transition</span>
                                 autoSlideDuration: 3500,
+                                <span>// Boolean : Auto sliding is paused on slider elements</span>
+                                autoSlidePause: true,
+                                <span>// String : Class for children of pagination </span>
+                                autoSlidePauseClass: null,
+                                <span>// Function : Callback function for slider hover on elements </span>
+                                autoSlideHoverCallback: function() {},
                                 <span>// String / JSON : pass any accepable anmiation argument
                                     in to increase the scroll, position, or duration</span>
                                 animation: null
@@ -103,11 +119,19 @@
                  prevId: "less_doge",
                  nextClass: "doge_choose",
                  prevClass: "doge_choose",
+                 selected: "much_current",
                  selectedClass: "much_choose",
+                 selectedCallback: function() { console.log("selectedCallback"); },
                  foreverScroll: false,
                  pagination: true,
+                 pagedClass: "such_paged",
+                 pagedCallback: function () { console.log("pagedCallback"); },
+                 pagedChildClass: "such_child_of_paged",
                  autoSlide: false,
                  autoSlideDuration: 1000,
+                 autoSlidePause: false,
+                 autoSlidePauseClass: ".doge",
+                 autoSlideHoverCallback: function() { console.log("autoSlideHoverCallback"); },
                  animation: {
                      duration: 1000,
                      specialEasing: {

@@ -18,6 +18,7 @@
         pagination: false,
         pagedClass: "much_pagination",
         pagedCallback: function() {},
+        pagedChildClass: "much_paged",
         autoSlide: false,
         autoSlideSpeed: 3500,
         autoSlidePause: true,
@@ -40,34 +41,26 @@
     MuchSlide.prototype = {
         init: function () {
             var self = this;
-            //self.selectorWidth = parseInt( self.$element.css( "width" ), 10 );
             self.selectorWidth = self.$element.width();
             self.currentPage = 0;
             self.sectionWidth = self.selectorWidth / self.settings.numShow;
             self.__children();
 
-            // modify children
             self.modifyDom();
 
-            //resize function
             self.resizeWindow();
 
-            // Click events for Next and Prev
             self.selectorClick();
 
-            // child clicks
             self.itemClick();
 
-            // Pagination => Requires only 1 numShow at a time.
             if ( self.settings.pagination && self.settings.numShow === 1 ) {
                 self.createPagination();
                 self.clickPagination();
-                //self.markPagination();
+                self.markPagination();
             }
-            // Auto Slide
             if ( self.settings.autoSlide ) {
                 self.createTimer();
-                //On hover of element, pagedClass, and selector ID's -> pause the autoSlide
                 if ( self.settings.autoSlidePause ) {
                     jQuery( "#" + self.settings.nextId +
                             ", #" + self.settings.prevId +
@@ -91,7 +84,6 @@
             var self = this;
             self.$element.css("position", "relative");
             parent = self.$element.parent();
-            // if no selector ID's  exist set em up
             if ( !self.settings.nextId || !self.settings.prevId) {
                 self.settings.nextId = "muchNext";
                 self.settings.prevId = "muchPrev";
@@ -101,6 +93,14 @@
             self.children.each( function() {
                 var $self = jQuery(this);
                 $self.attr("data-counter", self.counter).css({ "position": "absolute", "left": ( $self.data("counter") * self.sectionWidth ) + "px" });
+                left = $self.position().left;
+                if ( left < self.selectorWidth && left > -1  ) {
+                    $self.addClass( self.settings.selected );
+                    self.currentPage = $self.data("counter");
+                    if ( self.settings.pagination && self.settings.numShow === 1 ) {
+                        self.markPagination();
+                    }
+                }
                 self.counter++;
             });
             jQuery("#" + self.settings.nextId + ", #" + self.settings.prevId).mousedown(function(){return false;});
@@ -121,14 +121,12 @@
         },
         selectorClick: function () {
             var self = this;
-            // next click
             jQuery("#" + self.settings.nextId).on("click", function() {
                 if(self.$element.children().filter(":animated").length>0) {
                     return false;
                 }
                 self.animateNext();
             });
-            // prev click
             jQuery("#" + self.settings.prevId).on("click", function( ) {
                 if(self.$element.children().filter(":animated").length>0) {
                     return false;
@@ -170,13 +168,16 @@
                     if ( left < self.selectorWidth && left > -1  ) {
                         $self.addClass( self.settings.selected );
                         self.currentPage = $self.data("counter");
-                        self.markPagination();
+                        if ( self.settings.pagination && self.settings.numShow === 1 ) {
+                            self.markPagination();
+                        }
                     }
                 });
             });
         },
         itemClick: function () {
             var self = this;
+            self.__children();
             self.children.on( "click", function() {
                 var $self = jQuery(this);
                 self.children.removeClass( self.settings.selectedClass);
@@ -197,18 +198,14 @@
         createPagination: function () {
             var self = this;
             self.$element.after("<ul class='much_pagination'></ul>");
-            self.page = jQuery(".much_pagination");
+            self.page = jQuery( "." + self.settings.pagedClass );
             for ( i = 0; i < self.counter; i++ ) {
-                self.page.append("<li class='much_page' data-counter=" + i  + ">" + i + "</li>");
+                self.page.append("<li class='" + self.settings.pagedChildClass + "' data-counter=" + i  + ">" + i + "</li>");
             }
-        },
-        __markPagination: function () {
-            var self = this;
-            self.page.children().removeClass( self.settings.pagedClass );
-            $self.addClass( self.settings.pagedClass );
         },
         markPagination: function () {
             var self = this;
+            self.page = jQuery( "." + self.settings.pagedClass );
             self.page.children().each( function () {
                 var $self = jQuery(this);
                 if ( $self.data("counter") === self.currentPage ) {
@@ -235,7 +232,6 @@
 
     $.fn[ pluginName ] = function ( options ) {
         return this.each(function() {
-            //TODO - not allowing multiple different instances on one page
             if ( !$.data( this, "plugin_" + pluginName ) ) {
                 $.data( this, "plugin_" + pluginName, new MuchSlide( this, options ) );
             }

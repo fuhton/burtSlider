@@ -220,6 +220,7 @@
                 if ( $self.data("counter") === self.currentPage ) {
                     self.page.children().removeClass( self.settings.pagedSelectedClass );
                     $self.addClass( self.settings.pagedSelectedClass );
+                    self.settings.pagedCallback();
                 }
             });
         },
@@ -230,9 +231,6 @@
                     return false;
                 }
                 $self = jQuery(this);
-                self.page.children().removeClass( self.settings.pagedClass );
-                $self.addClass( self.settings.pagedClass );
-                self.settings.pagedCallback();
                 self.selectedPage = $self.data("counter");
                 self.itemMoveTo( self.selectedPage );
             });

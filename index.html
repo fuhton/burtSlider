@@ -87,6 +87,10 @@
         </section>
         <section class="primary-example">
             <div class="wrapper">
+                <div class="selectors">
+                    <div id="less_doge" class="doge_choose"><h3>So Less</h3></div>
+                    <div id="more_doge" class="doge_choose"><h3>Such More</h3></div>
+                </div>
                 <div class="wow">
                     <div class="doge">
                         <img src="http://i0.kym-cdn.com/photos/images/newsfeed/000/581/296/c09.jpg">
@@ -96,9 +100,8 @@
                         <img src="http://triggerplug.com/wp-content/uploads/2013/11/dange-to-touch.jpg">
                     </div>
                 </div>
-                <div class="selectors">
-                    <div id="less_doge" class="doge_choose"><h3>Much Less</h3></div>
-                    <div id="more_doge" class="doge_choose"><h3>So More</h3></div>
+                <div class="pause-autoSlide">
+                    <div class="doge_choose"><h3>Much Pause! Awesome! WoW!</h3></div>
                 </div>
             </div>
         </section>
@@ -127,6 +130,10 @@
                  foreverScroll: false,
                  paged: true,
                  pagedClass: "such_paged",
+                 autoSlide: true,
+                 autoSlideSpeed: 5000,
+                 autoSlidePause: true,
+                 autoSlidePauseClass: "doge_choose",
                  animation: 1000,
              });
 	 });

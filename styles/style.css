@@ -108,14 +108,14 @@ body h3 {
   height: 400px;
   width: 100%;
 }
-.primary-example .wow .much_pagination {
+.primary-example .wow .such_paged {
   list-style: none;
   display: inline-block;
   position: relative;
   overflow: hidden;
   width: 46%;
 }
-.primary-example .wow .much_pagination li {
+.primary-example .wow .such_paged li {
   padding: 25px 10px;
   cursor: pointer;
   margin: 5px 0;
@@ -123,10 +123,10 @@ body h3 {
   color: #f7f1e1;
   transition: 1.0s ease;
 }
-.primary-example .wow .much_pagination li:after {
+.primary-example .wow .such_paged li:after {
   content: ".";
 }
-.primary-example .wow .much_pagination li:hover {
+.primary-example .wow .such_paged li:hover {
   background: #08a6a9;
 }
 .primary-example .selectors .doge_choose {

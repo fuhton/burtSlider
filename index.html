@@ -59,10 +59,12 @@
                                 foreverScroll: true,
                                 <span>// Boolean : Display editable pagination</span>
                                 pagination: false,
-                                <span>// String : Class of current pagination </span>
+                                <span>// String : Class of current pagination ul </span>
                                 pagedClass: "much_pagination",
-                                <span>// String : Callback for current pagination </span>
+                                <span>// Function : Callback for current pagination </span>
                                 pagedCallback: function() {},
+                                <span>// String : Class of current pagination </span>
+                                pagedSelectedClass: "much_current_page",
                                 <span>// String : Class for children of pagination </span>
                                 pagedChildClass: "much_paged",
                                 <span>// Boolean : Slider automatically advances</span>
@@ -126,6 +128,7 @@
                  pagination: true,
                  pagedClass: "such_paged",
                  pagedCallback: function () { console.log("pagedCallback"); },
+                 pagedSelectedClass: "much_current_selected",
                  pagedChildClass: "such_child_of_paged",
                  autoSlide: false,
                  autoSlideDuration: 1000,

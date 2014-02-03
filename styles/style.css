@@ -129,6 +129,10 @@ body h3 {
 .primary-example .wow .such_paged li:hover {
   background: #08a6a9;
 }
+.primary-example .wow .such_paged li.much_current_page {
+  color: #e2cc90;
+  background: #09afb3;
+}
 .primary-example .selectors .doge_choose {
   display: inline-block;
   background: #a27ca1;

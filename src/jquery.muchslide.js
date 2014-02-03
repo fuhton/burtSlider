@@ -11,20 +11,20 @@
         prevId: null,
         nextClass: "much_selector",
         prevClass: "much_selector",
-        selected: "much_select",
+        currentDisplayed: "much_select",
         selectedClass: "much_selected",
         selectedCallback: function() {},
         foreverScroll: true,
-        pagination: false,
-        pagedClass: "much_pagination",
-        pagedCallback: function() {},
+        paged: false,
+        pagedClass: "much_paged",
+        pagedSelectedCallback: function() {},
         pagedSelectedClass: "much_current_page",
         pagedChildClass: "much_paged",
         autoSlide: false,
         autoSlideSpeed: 3500,
         autoSlidePause: true,
         autoSlidePauseClass: null,
-        autoSlideHoverCallback: function() {},
+        autoSlidePauseCallback: function() {},
         animation: null
     };
 
@@ -55,10 +55,10 @@
 
             self.itemClick();
 
-            if ( self.settings.pagination && self.settings.numShow === 1 ) {
-                self.createPagination();
-                self.clickPagination();
-                self.markPagination();
+            if ( self.settings.paged && self.settings.numShow === 1 ) {
+                self.createPaged();
+                self.clickPaged();
+                self.markPaged();
             }
             if ( self.settings.autoSlide ) {
                 self.createTimer();
@@ -70,7 +70,7 @@
                             ", ." + self.settings.autoSlidePauseClass
                           ).hover( function () {
                               clearInterval( self.set );
-                              self.settings.autoSlideHoverCallback();
+                              self.settings.autoSlidePauseCallback();
                           }, function ()  {
                               self.createTimer();
                           });
@@ -96,10 +96,10 @@
                 $self.attr("data-counter", self.counter).css({ "position": "absolute", "left": ( $self.data("counter") * self.sectionWidth ) + "px" });
                 left = $self.position().left;
                 if ( left < self.selectorWidth && left > -1  ) {
-                    $self.addClass( self.settings.selected );
+                    $self.addClass( self.settings.currentDisplayed );
                     self.currentPage = $self.data("counter");
-                    if ( self.settings.pagination && self.settings.numShow === 1 ) {
-                        self.markPagination();
+                    if ( self.settings.paged && self.settings.numShow === 1 ) {
+                        self.markPaged();
                     }
                 }
                 self.counter++;
@@ -165,12 +165,12 @@
                 var $self = jQuery(this);
                 $self.finish().animate({left: self.direction + "=" + self.length }, self.settings.animation, function() {
                     left = $self.position().left;
-                    $self.removeClass( self.settings.selected );
+                    $self.removeClass( self.settings.currentDisplayed );
                     if ( left < self.selectorWidth && left > -1  ) {
-                        $self.addClass( self.settings.selected );
+                        $self.addClass( self.settings.currentDisplayed );
                         self.currentPage = $self.data("counter");
-                        if ( self.settings.pagination && self.settings.numShow === 1 ) {
-                            self.markPagination();
+                        if ( self.settings.paged && self.settings.numShow === 1 ) {
+                            self.markPaged();
                         }
                     }
                 });
@@ -196,7 +196,7 @@
                 self.moveEach( self.selectedChildLeft );
             }
         },
-        createPagination: function () {
+        createPaged: function () {
             var self = this;
             self.$element.after("<ul class='" + self.settings.pagedClass+ "'></ul>");
             self.page = jQuery( "." + self.settings.pagedClass );
@@ -204,7 +204,7 @@
                 self.page.append("<li class='" + self.settings.pagedChildClass + "' data-counter=" + i  + ">" + i + "</li>");
             }
         },
-        markPagination: function () {
+        markPaged: function () {
             var self = this;
             self.page = jQuery( "." + self.settings.pagedClass );
             self.page.children().each( function () {
@@ -212,11 +212,11 @@
                 if ( $self.data("counter") === self.currentPage ) {
                     self.page.children().removeClass( self.settings.pagedSelectedClass );
                     $self.addClass( self.settings.pagedSelectedClass );
-                    self.settings.pagedCallback();
+                    self.settings.pagedSelectedCallback();
                 }
             });
         },
-        clickPagination: function () {
+        clickPaged: function () {
             var self = this;
             self.page.children().on( "click", function () {
                 if(self.$element.children().filter(":animated").length>0) {

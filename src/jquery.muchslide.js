@@ -18,6 +18,7 @@
         pagination: false,
         pagedClass: "much_pagination",
         pagedCallback: function() {},
+        pagedSelectedClass: "much_current_page",
         pagedChildClass: "much_paged",
         autoSlide: false,
         autoSlideSpeed: 3500,
@@ -197,7 +198,7 @@
         },
         createPagination: function () {
             var self = this;
-            self.$element.after("<ul class='much_pagination'></ul>");
+            self.$element.after("<ul class='" + self.settings.pagedClass+ "'></ul>");
             self.page = jQuery( "." + self.settings.pagedClass );
             for ( i = 0; i < self.counter; i++ ) {
                 self.page.append("<li class='" + self.settings.pagedChildClass + "' data-counter=" + i  + ">" + i + "</li>");
@@ -209,8 +210,8 @@
             self.page.children().each( function () {
                 var $self = jQuery(this);
                 if ( $self.data("counter") === self.currentPage ) {
-                    self.page.children().removeClass( self.settings.pagedClass );
-                    $self.addClass( self.settings.pagedClass );
+                    self.page.children().removeClass( self.settings.pagedSelectedClass );
+                    $self.addClass( self.settings.pagedSelectedClass );
                 }
             });
         },

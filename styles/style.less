@@ -19,13 +19,7 @@ font-family: 'Duru Sans', sans-serif;
   }
   pre
   {
-    overflow: hidden;
-    white-space: pre-wrap;
-    white-space: -moz-pre-wrap;
-    white-space: -pre-wrap;
-    white-space: -o-pre-wrap;
-    word-wrap: break-word;
-    overflow: auto;
+    overflow: scroll;
   }
 }
 
@@ -43,7 +37,6 @@ font-family: 'Duru Sans', sans-serif;
 {
   width: 100%;
   background-color: lighten(@tan, 5%);
-  border-bottom: 6px solid @green;
   text-align: center;
   h1
   {
@@ -59,7 +52,6 @@ font-family: 'Duru Sans', sans-serif;
 
 .primary-slider
 {
-  border-top: 5px solid @purple;
   .much-div
   {    
     .much_selector
@@ -74,7 +66,7 @@ font-family: 'Duru Sans', sans-serif;
     }
     #such-ul
     {
-      width: 87%;
+      width: 70%;
       height: 100px;
       overflow: hidden;
       position: relative;
@@ -87,9 +79,12 @@ font-family: 'Duru Sans', sans-serif;
       {
         text-align: center;
         font-size: 35px;
-        width: 30%;
+        width: 100%;
         margin: 0 1%;
-        border-bottom: 4px solid @yellow;
+        .much_select
+        {
+            display: block;
+          }
       }//li
     }//#such-ul
   }//much-div
@@ -116,13 +111,12 @@ font-family: 'Duru Sans', sans-serif;
 
 .primary-example
 {
-  background: lighten(@yellow, 30%);
   padding: 10px 0;
   display: inline-block;
   margin: 10px 0;
   width: 100%;
   position: relative;
-  height: 650px; 
+  height: 1000px;
   .wow, .selectors { 
     margin: 20px 0;
     text-align: center;
@@ -132,10 +126,10 @@ font-family: 'Duru Sans', sans-serif;
     width: 100%;
     position: absolute;
     height: 400px; 
-    top: 80px;
+    top: 150px;
     .doge
     {
-      width: 45%;
+      width: 300px;
       height: 100%;      
       overflow: hidden;
       position: relative;
@@ -144,17 +138,19 @@ font-family: 'Duru Sans', sans-serif;
       margin: 0 auto;
       img
       {
-        height: 390px;
+        height: 100%;
         width: 100%;
       }
     }
     .such_paged
     {
+      padding: 0;
+      margin: 0;
       list-style: none;
       display: inline-block;
       position: relative;
       overflow: hidden;
-      width: 46%;
+      width: 300px;
       li
       {
         padding: 25px 10px;
@@ -189,7 +185,7 @@ font-family: 'Duru Sans', sans-serif;
   {
     display: inline-block;
     background: @purple;
-    width: 325px;
+    width: 106px;
     padding: 20px; 
     color: lighten(@tan, 5%);
     cursor: pointer;
@@ -201,6 +197,7 @@ font-family: 'Duru Sans', sans-serif;
   }
   .pause-autoSlide
   {
+    display: none;
     position: absolute;
     width: 100%;
     text-align: center;
@@ -218,20 +215,10 @@ font-family: 'Duru Sans', sans-serif;
   text-align: left;
   padding: 20px 0;
   color: lighten(@tan, 5%);
-}
-
-
-
-/* Mixin to generate random number;
-   int should be 0 or 1, 1 being to make it an integer 
-*/
-.makeRandom(@min: 0, @max: @min+1, @int: 0) { 
-  .checkInt() {
-    @getNum: `Math.random() * (@{max} - @{min} + @{int})`;
-    @base: unit(`@{int} == 1 ? Math.floor(@{getNum}) : @{getNum}`);
+  p
+  {
+    padding: 10px;
   }
-  .checkInt();
-  @randNum: @base + @min;
 }
 
 /*
@@ -243,54 +230,3 @@ font-family: 'Duru Sans', sans-serif;
 @black: rgb(23,15,4);
 @yellow: rgb(236,215,4);
 @purple: rgb(162,124,161);
-
-
-@media (max-width : 768px ) { 
-  .primary-slider 
-  {
-    .much-div
-    {
-      .much_selector 
-      {
-        margin: 0;
-        text-align: center;
-        width: 100%;
-      }
-      #such-ul li
-      { 
-        width: 10%;
-      }
-    }
-  }
-  .primary-example
-  {
-    height: 1000px;
-    .doge_choose
-    {
-      width: 100px;
-    }
-    .wow
-    {
-      top: 150px;
-      .doge
-      {
-          width: 300px;
-        img
-        {
-          width: 300px;
-        }
-      }
-    }
-    .pause-autoSlide
-    {
-      display: none;
-    }
-  }
-  .site-footer
-  {
-    p
-    {
-      padding: 0 10px;
-    }
-  }
-}

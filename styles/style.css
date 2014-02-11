@@ -50,6 +50,10 @@ body pre {
   float: left;
   text-align: left;
 }
+.primary-slider .much-div #muchNext {
+  text-align: right;
+  text-indent: -10px;
+}
 .primary-slider .much-div #such-ul {
   width: 80%;
   height: 100px;

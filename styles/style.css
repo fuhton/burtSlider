@@ -44,9 +44,14 @@ body pre {
   height: 100px;
   overflow: hidden;
   margin-bottom: 30px;
+  padding: 0;
+  width: 10%;
+  margin-top: 30px;
+  float: left;
+  text-align: left;
 }
 .primary-slider .much-div #such-ul {
-  width: 70%;
+  width: 80%;
   height: 100px;
   overflow: hidden;
   position: relative;
@@ -54,7 +59,8 @@ body pre {
   display: inline-block;
   padding: 0;
   margin: 0;
-  margin-top: 100px;
+  margin-top: 60px;
+  float: left;
 }
 .primary-slider .much-div #such-ul li {
   text-align: center;
@@ -66,6 +72,7 @@ body pre {
   display: block;
 }
 .primary-review {
+  clear: both;
   background: #f7f1e1;
   padding: 40px 10px;
   margin: 10px 0;
@@ -101,7 +108,7 @@ body pre {
   height: 100%;
   overflow: hidden;
   position: relative;
-  display: inline-block;
+  display: block;
   padding: 0;
   margin: 0 auto;
 }
@@ -124,7 +131,10 @@ body pre {
   margin: 5px 0;
   background: #078e91;
   color: #f7f1e1;
-  transition: 1.0s ease;
+  -webkit-transition: background 1s ease;
+  -moz-transition: background 1s ease;
+  -ms-transition: background 1s ease;
+  -o-transition: background 1s ease;
 }
 .primary-example .wow .such_paged li:after {
   content: ".";
@@ -148,7 +158,10 @@ body pre {
   padding: 20px;
   color: #f7f1e1;
   cursor: pointer;
-  transition: 0.5s ease;
+  -webkit-transition: background 0.5s ease;
+  -moz-transition: background 0.5s ease;
+  -ms-transition: background 0.5s ease;
+  -o-transition: background 0.5s ease;
 }
 .primary-example .doge_choose:hover {
   background: #b79ab6;
@@ -175,3 +188,41 @@ body pre {
 /*
  * Color Mixins
  */
+/*
+ * Transition Mixin
+ */
+/* 
+ * Media Types
+ */
+@media screen and (min-width: 768px) {
+  .primary-example {
+    height: 615px;
+  }
+  .primary-example .wow {
+    top: 100px;
+  }
+  .primary-example .wow .doge {
+    display: inline-block;
+    width: 48%;
+    margin: 0px 1%;
+  }
+  .primary-example .wow .such_paged {
+    width: 48%;
+    margin: 0 1%;
+  }
+  .primary-example .wow .such_paged li {
+    padding: 27px 10px;
+    margin-top: 0;
+  }
+  .primary-example .doge_choose {
+    margin: 0px .8%;
+    width: 48%;
+    padding: 20px 0;
+  }
+  .primary-example .pause-autoSlide {
+    display: inline-block;
+  }
+  .primary-example .pause-autoSlide .doge_choose {
+    width: 98%;
+  }
+}

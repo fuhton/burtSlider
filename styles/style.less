@@ -63,10 +63,15 @@ font-family: 'Duru Sans', sans-serif;
       height: 100px;
       overflow: hidden;
       margin-bottom: 30px;
+      padding: 0;
+      width: 10%;
+      margin-top: 30px;
+      float: left;
+      text-align: left;
     }
     #such-ul
     {
-      width: 70%;
+      width: 80%;
       height: 100px;
       overflow: hidden;
       position: relative;
@@ -74,7 +79,8 @@ font-family: 'Duru Sans', sans-serif;
       display: inline-block;
       padding: 0;
       margin:0;
-      margin-top: 100px;
+      margin-top: 60px;
+      float: left;
       li
       {
         text-align: center;
@@ -92,6 +98,7 @@ font-family: 'Duru Sans', sans-serif;
 
 .primary-review
 {
+  clear: both;
   background: lighten(@tan, 5%);
   padding: 40px 10px;
   margin: 10px 0;
@@ -133,7 +140,7 @@ font-family: 'Duru Sans', sans-serif;
       height: 100%;      
       overflow: hidden;
       position: relative;
-      display: inline-block;
+      display: block;
       padding: 0;
       margin: 0 auto;
       img
@@ -158,7 +165,7 @@ font-family: 'Duru Sans', sans-serif;
         margin: 5px 0;
         background: @green;
         color: lighten(@tan, 5%);
-        transition: 1.0s ease;
+        .transition( background 1.0s ease);        
         &:after
         {
           content: ".";
@@ -189,7 +196,7 @@ font-family: 'Duru Sans', sans-serif;
     padding: 20px; 
     color: lighten(@tan, 5%);
     cursor: pointer;
-    transition: 0.5s ease;
+    .transition( background 0.5s ease);
     &:hover
     {
       background: lighten(@purple, 10%);
@@ -230,3 +237,58 @@ font-family: 'Duru Sans', sans-serif;
 @black: rgb(23,15,4);
 @yellow: rgb(236,215,4);
 @purple: rgb(162,124,161);
+
+/*
+ * Transition Mixin
+ */
+.transition (@transition) {
+  -webkit-transition: @transition;  
+  -moz-transition:    @transition;
+  -ms-transition:     @transition; 
+  -o-transition:      @transition;  
+}
+
+
+/* 
+ * Media Types
+ */
+@media screen and (min-width : 768px) {
+  .primary-example
+  {
+    height: 615px;
+    .wow
+    {
+      top: 100px;
+      .doge
+      {
+        display: inline-block;
+        width: 48%;
+        margin: 0px 1%;
+      }
+      .such_paged
+      {
+        width: 48%;
+        margin: 0 1%;
+        li
+        {
+          padding: 27px 10px;
+          margin-top: 0;
+        }
+      }
+    }
+    .doge_choose
+    {
+      margin: 0px .8%;
+      width: 48%;
+      padding: 20px 0;
+    }
+    .pause-autoSlide
+    {
+      display: inline-block;
+      .doge_choose
+      {
+        width: 98%;
+      }
+    }
+  }
+}

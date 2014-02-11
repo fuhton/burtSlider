@@ -25,7 +25,8 @@
         autoSlidePause: true,
         autoSlidePauseClass: null,
         autoSlidePauseCallback: function() {},
-        animation: null
+        animation: null, 
+	direction: "left"
     };
 
     // The actual plugin constructor
@@ -54,7 +55,7 @@
             self.selectorClick();
 
             self.itemClick();
-
+	    console.log(self.settings.direction);
             if ( self.settings.paged && self.settings.numShow === 1 ) {
                 self.createPaged();
                 self.clickPaged();
@@ -93,9 +94,18 @@
             self.counter = 0;
             self.children.each( function() {
                 var $self = jQuery(this);
-                $self.attr("data-counter", self.counter).css({ "position": "absolute", "left": ( $self.data("counter") * self.sectionWidth ) + "px" });
-                left = $self.position().left;
-                if ( left < self.selectorWidth && left > -1  ) {
+		if (self.settings.direction === "top") {
+		    $self.attr("data-counter", self.counter).css({ "position": "absolute", "top": ( $self.data("counter") * self.sectionWidth ) + "px" });
+		} else { 
+		    $self.attr("data-counter", self.counter).css({ "position": "absolute", "left": ( $self.data("counter") * self.sectionWidth ) + "px" });
+		}
+		console.log($self);
+		if (self.settings.direction === "top") {
+		    self.direction=$self.position().top;
+		} else {
+		    self.direction=$self.position().left;
+		}
+                if ( self.direction < self.selectorWidth && self.direction > -1  ) {
                     $self.addClass( self.settings.currentDisplayed );
                     self.currentPage = $self.data("counter");
                     if ( self.settings.paged && self.settings.numShow === 1 ) {
@@ -138,22 +148,30 @@
         animateNext: function () {
             var self = this;
             self.__children();
-            if ( parseInt(self.children.last().css("left"), 10) >= (self.selectorWidth - 2 ) ) {
+            if ( parseInt(self.children.last().css(self.settings.direction), 10) >= (self.selectorWidth - 2 ) ) {
                 self.moveEach( self.sectionWidth );
             } else if ( self.settings.foreverScroll ) {
                 self.children.first().remove().insertAfter(self.children.last());
-                self.children.first().animate({left: self.selectorWidth});
+		if (self.settings.direction === "top") {
+		    self.children.first().animate({top: self.selectorWidth});
+		} else {
+		    self.children.first().animate({left: self.selectorWidth});
+		}
                 self.moveEach( self.sectionWidth );
             }
         },
         animatePrev: function () {
             var self = this;
             self.__children();
-            if ( parseInt(self.children.first().css("left"), 10) <= -1 ) {
+            if ( parseInt(self.children.first().css(self.settings.direction), 10) <= -1 ) {
                 self.moveEach( self.sectionWidth, "+" );
             } else if ( self.settings.foreverScroll ) {
                 self.children.last().remove().insertBefore(self.children.first());
-                self.children.last().animate({left: -self.sectionWidth});
+               	if (self.settings.direction === "top") {
+		    self.children.last().animate({top: -self.selectorWidth});
+		} else {
+		    self.children.last().animate({left: -self.selectorWidth});
+		}    
                 self.moveEach( self.sectionWidth, "+" );
             }
         },
@@ -163,17 +181,31 @@
             self.length = sectionWidth;
             self.children.each( function () {
                 var $self = jQuery(this);
-                $self.finish().animate({left: self.direction + "=" + self.length }, self.settings.animation, function() {
-                    left = $self.position().left;
-                    $self.removeClass( self.settings.currentDisplayed );
-                    if ( left < self.selectorWidth && left > -1  ) {
-                        $self.addClass( self.settings.currentDisplayed );
-                        self.currentPage = $self.data("counter");
-                        if ( self.settings.paged && self.settings.numShow === 1 ) {
-                            self.markPaged();
-                        }
-                    }
-                });
+               	if (self.settings.direction === "top") {
+		    $self.finish().animate({top: self.direction + "=" + self.length }, self.settings.animation, function() {
+			    left = $self.position().top;
+			    $self.removeClass( self.settings.currentDisplayed );
+			    if ( left < self.selectorWidth && left > -1  ) {
+				$self.addClass( self.settings.currentDisplayed );
+				self.currentPage = $self.data("counter");
+				if ( self.settings.paged && self.settings.numShow === 1 ) {
+				    self.markPaged();
+				}
+			    }
+			});
+		} else {
+		    $self.finish().animate({left: self.direction + "=" + self.length }, self.settings.animation, function() {
+			    left = $self.position().left;
+			    $self.removeClass( self.settings.currentDisplayed );
+			    if ( left < self.selectorWidth && left > -1  ) {
+				$self.addClass( self.settings.currentDisplayed );
+				self.currentPage = $self.data("counter");
+				if ( self.settings.paged && self.settings.numShow === 1 ) {
+				    self.markPaged();
+				}
+			    }
+			});
+		}
             });
         },
         itemClick: function () {

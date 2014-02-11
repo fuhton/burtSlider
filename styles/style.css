@@ -176,7 +176,43 @@ body pre {
 .primary-example .pause-autoSlide .doge_choose {
   width: 90%;
 }
+.primary-link {
+  clear: both;
+  background: #f7f1e1;
+  float: left;
+  width: 100%;
+  margin: 10px 0;
+}
+.primary-link .link {
+  float: left;
+  width: 100%;
+  text-align: center;
+  color: #067679;
+  text-decoration: none;
+  -webkit-transition: color 1s ease;
+  -moz-transition: color 1s ease;
+  -ms-transition: color 1s ease;
+  -o-transition: color 1s ease;
+}
+.primary-link .link p {
+  margin: 20px auto;
+  padding: 20px;
+  width: 200px;
+  border: 5px solid #fbe828;
+  border-radius: 5px;
+  -webkit-transition: border 0.5s ease;
+  -moz-transition: border 0.5s ease;
+  -ms-transition: border 0.5s ease;
+  -o-transition: border 0.5s ease;
+}
+.primary-link .link p:hover {
+  border-color: #a27ca1;
+}
+.primary-link .link:hover {
+  color: #6c4c6b;
+}
 .site-footer {
+  clear: both;
   background: #067679;
   text-align: left;
   padding: 20px 0;
@@ -224,5 +260,11 @@ body pre {
   }
   .primary-example .pause-autoSlide .doge_choose {
     width: 98%;
+  }
+  .primary-link .link {
+    width: 33%;
+  }
+  .primary-link .link p {
+    width: 150px;
   }
 }

@@ -217,10 +217,13 @@
             var self = this;
             self.selectedPage = selectedPage;
             self.selectedChild = self.$element.find("[data-counter=" + self.selectedPage + "]");
-            self.selectedChildLeft =  parseInt( self.selectedChild.css("left"), 10 );
-            self.selectedLeft = self.selectedChildLeft / self.sectionWidth;
-            if ( self.selectedChildLeft < 0 || self.selectedChildLeft > 0 ) {
-                self.moveEach( self.selectedChildLeft );
+            if ( self.settings.verticalSlide ) {
+		self.selectedDistance =  parseInt( self.selectedChild.css("top"), 10 );
+	    } else {
+		self.selectedDistance =  parseInt( self.selectedChild.css("left"), 10 );
+	    }
+            if ( self.selectedDistance < 0 || self.selectedDistance > 0 ) {
+                self.moveEach( self.selectedDistance );
             }
         },
         createPaged: function () {

@@ -46,12 +46,10 @@
             self.selectorWidth = self.$element.width();
             self.currentPage = 0;
             self.sectionWidth = self.selectorWidth / self.settings.numShow;
-            self.__children();
 
+            self._children();
             self.modifyDom();
-
             self.resizeWindow();
-
             self.selectorClick();
 
             self.itemClick();
@@ -78,7 +76,7 @@
                 }
             }
         },
-        __children: function () {
+        _children: function () {
             var self = this;
             self.children = self.$element.children( self.settings.children );
         },
@@ -112,7 +110,6 @@
                 }
                 self.counter++;
             });
-            jQuery("#" + self.settings.nextId + ", #" + self.settings.prevId).mousedown(function(){return false;});
         },
         resizeWindow: function () {
             var self = this;
@@ -145,7 +142,7 @@
         },
         animateNext: function () {
             var self = this;
-            self.__children();
+            self._children();
             if ( parseInt(self.children.last().css(self.slideDirection), 10) >= (self.selectorWidth - 2 ) ) {
                 self.moveEach( self.sectionWidth );
             } else if ( self.settings.foreverScroll ) {
@@ -160,7 +157,7 @@
         },
         animatePrev: function () {
             var self = this;
-            self.__children();
+            self._children();
             if ( parseInt(self.children.first().css(self.slideDirection), 10) <= -1 ) {
                 self.moveEach( self.sectionWidth, "+" );
             } else if ( self.settings.foreverScroll ) {
@@ -203,9 +200,12 @@
                 }
             }
         },
+        /*****************************************************************
+                        Pagination
+        *****************************************************************/
         itemClick: function () {
             var self = this;
-            self.__children();
+            self._children();
             self.children.on( "click", function() {
                 var $self = jQuery(this);
                 self.children.removeClass( self.settings.selectedClass);
@@ -217,11 +217,7 @@
             var self = this;
             self.selectedPage = selectedPage;
             self.selectedChild = self.$element.find("[data-counter=" + self.selectedPage + "]");
-            if ( self.settings.verticalSlide ) {
-		self.selectedDistance =  parseInt( self.selectedChild.css("top"), 10 );
-	    } else {
-		self.selectedDistance =  parseInt( self.selectedChild.css("left"), 10 );
-	    }
+            self.selectedDistance =  parseInt( self.selectedChild.css( self.slideDirection ), 10 );
             if ( self.selectedDistance < 0 || self.selectedDistance > 0 ) {
                 self.moveEach( self.selectedDistance );
             }

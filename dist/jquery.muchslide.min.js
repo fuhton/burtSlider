@@ -1,7 +1,7 @@
 /*
  *  MuchSlide  - v0.8.0
  *  A muchslide is a jQuery slider plugin. Created out of the frustration we all face, for a far more customizable front-end jQuery slider.
- *  http://jquerymuchslide.com
+ *  http://fuhton.github.io/muchslide/
  *
  *  Made by Nick Smith
  *  Under MIT License

@@ -1,7 +1,8 @@
 {
-	"name": "muchslide js",
+	"name": "muchslide",
 	"title": "MuchSlide ",
 	"description": "A muchslide is a jQuery slider plugin. Created out of the frustration we all face, for a far more customizable front-end jQuery slider.",
+	"name": "muchslide",
 	"keywords": [
 		"jquery",
 		"sliders",
@@ -28,7 +29,7 @@
 		}
 	],
 	"bugs": "https://github.com/fuhton/muchslide/issues",
-	"homepage": "http://jquerymuchslide.com",
+	"homepage": "http://fuhton.github.io/muchslide/",
 	"docs": "https://github.com/fuhton/muchslide#readme",
 	"download": "https://github.com/fuhton/muchslide/archive/master.zip",
 	"dependencies": {

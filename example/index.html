@@ -1,78 +1,153 @@
 <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
-    <head>
-	<title>jQuery Boilerplate</title>
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
-	<script src="../src/jquery.muchslide.js"></script>
-        <style>
-         #such-ul, #so-ul {
-           width: 90%;
-           height: 100px;
-           overflow: hidden;
-           position: relative;
-           list-style: none;
-           display: inline-block;
-           padding: 0;
-           margin:0;
-           margin-top: 100px;
-         }
-         #such-ul li, #so-ul li {
-           border: 1px solid black;
-           font-size: 40px;
-           text-align: center;
-           width: 33%;
-         }
-         li.much_current_page, .much_select {
-           background: red;
-         }
-         .much_selector {
-           display: inline-block;
-           margin-bottom: 16%;
-           vertical-align: middle;
-           font-size: 2em;
-           cursor: pointer;
-         }
-         .much-div {
-           max-width: 960px;
-           margin: 0 auto;
-         }
-        </style>
-    </head>
-    <body>
+  <head>
+    <title>Much Slide</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+    <script src="../src/jquery.muchslide.js"></script>
+    <link href='http://fonts.googleapis.com/css?family=Duru+Sans' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="styles/style.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="wrapper">
+        <h1>Much Slide</h1>
+        <span>So jQuery. Such control. WoW!</span>
+      </div>
+    </header>
+    <section class="primary-slider">
+      <div class="wrapper">
         <div class="much-div">
-            <ul id="such-ul">
-                <li>Such HTML</li>
-                <li>Much jQuery</li>
-                <li>Wow</li>
-                <li>So Cool</li>
-                <li>Amazing</li>
-                <li>Awesome</li>
-                <li>Many Things!</li>
-            </ul>
+          <ul id="such-ul">
+            <li>Such HTML</li>
+            <li>Much jQuery</li>
+            <li>Wow</li>
+            <li>So Cool</li>
+            <li>Amazing</li>
+            <li>Awesome</li>
+            <li>Many Things!</li>
+          </ul>
         </div>
-
-	<div class="much-div">
-            <ul id="so-ul">
-                <li>Such HTML</li>
-                <li>Much jQuery</li>
-                <li>Wow</li>
-                <li>So Cool</li>
-                <li>Amazing</li>
-                <li>Awesome</li>
-                <li>Many Things!</li>
-            </ul>
+      </div>
+    </section>
+    <section class="primary-review">
+      <div class="wrapper">
+        <div class="so-code">
+          <pre>
+            defaults = {
+            <span>// Integer : # of elements to be displayed at once</span>
+            numShow: 3,
+            <span>// String : Element type of children</span>
+            children: "li",
+            <span>// String : ID of Next clicker element</span>
+            <span>// Note :: Both nextId and prevId must be defined
+              for the defaults to be overridden</span>
+            nextId: null,
+            <span>// String : ID of Prev clicker element</span>
+            prevId: null,
+            <span>// String : Class of Prev clicker element</span>
+            nextClass: "much_selector",
+            <span>// String : Class of Prev clicker element</span>
+            prevClass: "much_selector",
+            <span>// String : Class for the currently displayed element</span>
+            currentDisplayed: "much_select",
+            <span>// String : Callback class for the selected child element</span>
+            selectedClass: "much_selected",
+            <span>// Function : Callback function upon the selected child element</span>
+            selectedCallback: function() {},
+            <span>// Boolean : Forever cycle keeps going and going and ...</span>
+            foreverScroll: true,
+            <span>// Boolean : Display editable pagination</span>
+            paged: false,
+            <span>// String : Class of current pagination ul </span>
+            pagedClass: "much_pagination",
+            <span>// String : Class of current pagination </span>
+            pagedSelectedClass: "much_current_page",
+            <span>// Function : Callback for current pagination </span>
+            pagedSelectedCallback: function() {},
+            <span>// String : Class for children of pagination </span>
+            pagedChildClass: "much_paged",
+            <span>// Boolean : Slider automatically advances</span>
+            autoSlide: false,
+            <span>// Int : # of milliseconds between each auto transition</span>
+            autoSlideSpeed: 3500,
+            <span>// Boolean : Auto sliding is paused on slider elements</span>
+            autoSlidePause: true,
+            <span>// String : Class for children of pagination </span>
+            autoSlidePauseClass: null,
+            <span>// Function : Callback function for slider hover on elements </span>
+            autoSlidePauseCallback: function() {},
+            <span>// String / JSON : pass any accepable anmiation argument
+              in to increase the scroll, position, or duration</span>
+            animation: null
+            };
+          </pre>
         </div>
-        <script>
-	 $(function() {
-             $("#so-ul").muchslide({
-                 autoSlide: false,
-                 numShow: 1,
-                 paged: true,
-                 pagedClass: "much_p",
-                 verticalSlide: false,
-             });
+      </div>
+    </section>
+    <section class="primary-example">
+      <div class="wrapper">
+        <div class="selectors">
+          <div id="less_doge" class="doge_choose"><h3>So Left</h3></div>
+          <div id="more_doge" class="doge_choose"><h3>Such Right</h3></div>
+        </div>
+        <div class="wow">
+          <div class="doge">
+            <img src="http://i0.kym-cdn.com/photos/images/newsfeed/000/581/296/c09.jpg">
+            <img src="http://meme-lol.com/wp-content/uploads/2013/11/Doge-MEME.jpg">
+            <img src="http://i3.kym-cdn.com/photos/images/newsfeed/000/581/720/315.jpg">
+            <img src="http://i3.kym-cdn.com/photos/images/newsfeed/000/581/723/a8b.jpg">
+            <img src="http://triggerplug.com/wp-content/uploads/2013/11/dange-to-touch.jpg">
+          </div>
+        </div>
+        <div class="pause-autoSlide">
+          <div class="doge_choose"><h3>Hover to Paws!</h3></div>
+        </div>
+      </div>
+    </section>
+    <section class="primary-link">
+      <div class="wrapper">
+        <a href="https://github.com/fuhton/muchslide" target="_blank" class="link"><p>Fork MuchSlide on Github</p></a>
+        <a href="https://twitter.com/fuhton" target="_blank" class="link"><p>Follow me on Twitter</p></a>
+        <a href="http://iliketheideaof.us/" target="_blank" class="link"><p>Check out more - iliketheideaof.us</p></a>
+      </div>
+    </section>
+    <footer class="site-footer">
+      <div class="wrapper">
+        <p>Built by Nick Smith with the cooperation of Burst Marketing Inc</p>
+      </div>
+    </footer>
+    <script>
+      $(function() {
 
-	 });
-	</script>
-    </body>
-</html>
+
+      $("#such-ul").muchslide({
+      numShow: 1,
+      autoSlide: true,
+      autoSlideSpeed: 2000,
+      });
+
+
+      $(".doge").muchslide({
+      numShow: 1,
+      children: "img",
+      nextId: "more_doge",
+      prevId: "less_doge",
+      nextClass: "doge_choose",
+      prevClass: "doge_choose",
+      currentDisplayed: "much_current",
+      selectedClass: "much_choose",
+      selectedCallback: function() { console.log("selectedCallback"); },
+      foreverScroll: false,
+      paged: true,
+      pagedClass: "such_paged",
+      autoSlide: true,
+      autoSlideSpeed: 5000,
+      autoSlidePause: true,
+      autoSlidePauseClass: "doge_choose",
+      animation: 1000,
+      });
+      });
+    </script>
+  </body>
+  </html>

@@ -1,14 +1,14 @@
 {
-	"name": "burtSlider",
-	"title": "jQuery BurtSlider",
-	"description": "A jump-start for jQuery plugins development.",
+	"name": "muchslide js",
+	"title": "MuchSlide ",
+	"description": "A muchslide is a jQuery slider plugin. Created out of the frustration we all face, for a far more customizable front-end jQuery slider.",
 	"keywords": [
 		"jquery",
 		"sliders",
 		"plugins",
-		"burtSlider"
+		"slider"
 	],
-	"version": "0.5.0",
+	"version": "0.8.0",
 	"author": {
 		"name": "Nick Smith",
 		"email": "fuhton@gmail.com",
@@ -27,10 +27,10 @@
 			"url": "http://mit-license.org/"
 		}
 	],
-	"bugs": "https://github.com/fuhton/burtSlider/issues",
-	"homepage": "http://jqueryburtSlider.com",
-	"docs": "https://github.com/fuhton/burtSlider#readme",
-	"download": "https://github.com/fuhton/burtSlider/archive/master.zip",
+	"bugs": "https://github.com/fuhton/muchslide/issues",
+	"homepage": "http://jquerymuchslide.com",
+	"docs": "https://github.com/fuhton/muchslide#readme",
+	"download": "https://github.com/fuhton/muchslide/archive/master.zip",
 	"dependencies": {
 		"jquery": ">=1.10"
 	}

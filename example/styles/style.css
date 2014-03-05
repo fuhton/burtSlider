@@ -1,0 +1,274 @@
+body {
+  font-family: 'Duru Sans', sans-serif;
+  margin: 10px;
+  color: #170f04;
+}
+body h1 {
+  font-size: 4em;
+}
+body h2 {
+  font-size: 3em;
+}
+body h3 {
+  margin: 0;
+  font-size: 2em;
+}
+body pre {
+  overflow: scroll;
+}
+.wrapper {
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  max-width: 960px;
+  position: relative;
+}
+.site-header {
+  width: 100%;
+  background-color: #f7f1e1;
+  text-align: center;
+}
+.site-header h1 {
+  margin: 0;
+  padding: 10px;
+}
+.site-header span {
+  padding: 10px 0;
+  display: block;
+}
+.primary-slider .much-div .much_selector {
+  display: inline-block;
+  color: #ecd704;
+  font-size: 5em;
+  cursor: pointer;
+  height: 100px;
+  overflow: hidden;
+  margin-bottom: 30px;
+  padding: 0;
+  width: 10%;
+  margin-top: 30px;
+  float: left;
+  text-align: left;
+}
+.primary-slider .much-div #muchNext {
+  text-align: right;
+  text-indent: -10px;
+}
+.primary-slider .much-div #such-ul {
+  width: 80%;
+  height: 100px;
+  overflow: hidden;
+  position: relative;
+  list-style: none;
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+  margin-top: 60px;
+  float: left;
+}
+.primary-slider .much-div #such-ul li {
+  text-align: center;
+  font-size: 35px;
+  width: 100%;
+  margin: 0 1%;
+}
+.primary-slider .much-div #such-ul li .much_select {
+  display: block;
+}
+.primary-review {
+  clear: both;
+  background: #f7f1e1;
+  padding: 40px 10px;
+  margin: 10px 0;
+}
+.primary-review .so-code {
+  border: 4px solid #a27ca1;
+  background: #ffffff;
+}
+.primary-review .so-code pre span {
+  color: #c58022;
+}
+.primary-example {
+  padding: 10px 0;
+  display: inline-block;
+  margin: 10px 0;
+  width: 100%;
+  position: relative;
+  height: 1000px;
+}
+.primary-example .wow,
+.primary-example .selectors {
+  margin: 20px 0;
+  text-align: center;
+}
+.primary-example .wow {
+  width: 100%;
+  position: absolute;
+  height: 400px;
+  top: 150px;
+}
+.primary-example .wow .doge {
+  width: 300px;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  display: block;
+  padding: 0;
+  margin: 0 auto;
+}
+.primary-example .wow .doge img {
+  height: 100%;
+  width: 100%;
+}
+.primary-example .wow .such_paged {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  width: 300px;
+}
+.primary-example .wow .such_paged li {
+  padding: 25px 10px;
+  cursor: pointer;
+  margin: 5px 0;
+  background: #078e91;
+  color: #f7f1e1;
+  -webkit-transition: background 1s ease;
+  -moz-transition: background 1s ease;
+  -ms-transition: background 1s ease;
+  -o-transition: background 1s ease;
+}
+.primary-example .wow .such_paged li:after {
+  content: ".";
+}
+.primary-example .wow .such_paged li:hover {
+  background: #08a6a9;
+}
+.primary-example .wow .such_paged li.much_current_page {
+  color: #e2cc90;
+  background: #09afb3;
+}
+.primary-example .selectors {
+  position: absolute;
+  width: 100%;
+  top: 0;
+}
+.primary-example .doge_choose {
+  display: inline-block;
+  background: #a27ca1;
+  width: 106px;
+  padding: 20px;
+  color: #f7f1e1;
+  cursor: pointer;
+  -webkit-transition: background 0.5s ease;
+  -moz-transition: background 0.5s ease;
+  -ms-transition: background 0.5s ease;
+  -o-transition: background 0.5s ease;
+}
+.primary-example .doge_choose:hover {
+  background: #b79ab6;
+}
+.primary-example .pause-autoSlide {
+  display: none;
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  bottom: 0;
+}
+.primary-example .pause-autoSlide .doge_choose {
+  width: 90%;
+}
+.primary-link {
+  clear: both;
+  background: #f7f1e1;
+  float: left;
+  width: 100%;
+  margin: 10px 0;
+}
+.primary-link .link {
+  float: left;
+  width: 100%;
+  text-align: center;
+  color: #067679;
+  text-decoration: none;
+  -webkit-transition: color 1s ease;
+  -moz-transition: color 1s ease;
+  -ms-transition: color 1s ease;
+  -o-transition: color 1s ease;
+}
+.primary-link .link p {
+  margin: 20px auto;
+  padding: 20px;
+  width: 200px;
+  border: 5px solid #fbe828;
+  border-radius: 5px;
+  -webkit-transition: border 0.5s ease;
+  -moz-transition: border 0.5s ease;
+  -ms-transition: border 0.5s ease;
+  -o-transition: border 0.5s ease;
+}
+.primary-link .link p:hover {
+  border-color: #a27ca1;
+}
+.primary-link .link:hover {
+  color: #6c4c6b;
+}
+.site-footer {
+  clear: both;
+  background: #067679;
+  text-align: left;
+  padding: 20px 0;
+  color: #f7f1e1;
+}
+.site-footer p {
+  padding: 10px;
+}
+/*
+ * Color Mixins
+ */
+/*
+ * Transition Mixin
+ */
+/* 
+ * Media Types
+ */
+@media screen and (min-width: 768px) {
+  .primary-example {
+    height: 615px;
+  }
+  .primary-example .wow {
+    top: 100px;
+  }
+  .primary-example .wow .doge {
+    display: inline-block;
+    width: 48%;
+    margin: 0px 1%;
+  }
+  .primary-example .wow .such_paged {
+    width: 48%;
+    margin: 0 1%;
+  }
+  .primary-example .wow .such_paged li {
+    padding: 27px 10px;
+    margin-top: 0;
+  }
+  .primary-example .doge_choose {
+    margin: 0px .8%;
+    width: 48%;
+    padding: 20px 0;
+  }
+  .primary-example .pause-autoSlide {
+    display: inline-block;
+  }
+  .primary-example .pause-autoSlide .doge_choose {
+    width: 98%;
+  }
+  .primary-link .link {
+    width: 33%;
+  }
+  .primary-link .link p {
+    width: 150px;
+  }
+}

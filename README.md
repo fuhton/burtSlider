@@ -38,12 +38,12 @@ All the options:
 
 ```javascript
 $('.much-parent').muchslide({
-    
+
     // Integer : # of elements to be displayed at once
     numShow: 3,
     // String : Element type of children
     children: "li",
-    
+
     // String : ID of Next clicker element
     // Note :: Both nextId and prevId must be defined for the defaults to be overridden
     nextId: null,
@@ -53,39 +53,39 @@ $('.much-parent').muchslide({
     nextClass: "much_selector",
     // String : Class of Prev clicker element
     prevClass: "much_selector",
-    
+
     // String : Class for the currently displayed element
     currentDisplayed: "much_select",
     // String : Callback class for the selected child element
     selectedClass: "much_selected",
     // Function : Callback function upon the selected child element
     selectedCallback: function() {},
+
     // Boolean : Forever cycle keeps going and going and ...
-    
     foreverScroll: true,
+
     // Boolean : Display editable pagination
-    
     paged: false,
-    // String : Class of current pagination ul 
+    // String : Class of current pagination ul
     pagedClass: "much_pagination",
-    // String : Class of current pagination 
+    // String : Class of current pagination
     pagedSelectedClass: "much_current_page",
-    // Function : Callback for current pagination 
+    // Function : Callback for current pagination
     pagedSelectedCallback: function() {},
-    // String : Class for children of pagination 
+    // String : Class for children of pagination
     pagedChildClass: "much_paged",
-    
+
     // Boolean : Slider automatically advances
     autoSlide: false,
     // Int : # of milliseconds between each auto transition
     autoSlideSpeed: 3500,
     // Boolean : Auto sliding is paused on slider elements
     autoSlidePause: true,
-    // String : Class for children of pagination 
+    // String : Class for children of pagination
     autoSlidePauseClass: null,
-    // Function : Callback function for slider hover on elements 
+    // Function : Callback function for slider hover on elements
     autoSlidePauseCallback: function() {},
-    
+
     // String / JSON : pass any accepable anmiation argument in to increase the scroll, position, or duration
     animation: null,
     // Boolean : Slider advances vertically instead of horizontally
@@ -98,4 +98,3 @@ Issues and Contribution
 =======================
 
 Please submit a ticket through github if there are any issues and feel free to offer a pull-request.
-

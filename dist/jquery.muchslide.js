@@ -94,7 +94,7 @@
             if ( !self.settings.nextId || !self.settings.prevId) {
                 self.settings.nextId = "muchNext";
                 self.settings.prevId = "muchPrev";
-                self.$element.parent().append("<div id='" + self.settings.nextId + "' class='" + self.settings.nextClass + "'>></div>").prepend("<div id='" + self.settings.prevId + "' class='" + self.settings.prevClass  + "'><</div>");
+                self.$element.parent().append("<div id='" + self.settings.nextId + "' class='" + self.settings.nextClass + "'></div>").prepend("<div id='" + self.settings.prevId + "' class='" + self.settings.prevClass  + "'></div>");
             }
             self.counter = 0;
             self.children.each( function() {
